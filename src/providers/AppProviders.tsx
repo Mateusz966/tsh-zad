@@ -4,11 +4,15 @@ import { AppProvidersProps } from './AppProviders.types';
 import {ChakraProvider} from "@chakra-ui/react";
 import theme from "../config/theme";
 import {cHistory} from "../config/history";
+import {UserProvider} from "./UserProvider";
 
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <ChakraProvider theme={theme}>
     <Router history={cHistory}>
-      {children}
+      <UserProvider>
+        {children}
+      </UserProvider>
     </Router>
-  </ChakraProvider>);
+  </ChakraProvider>
+);

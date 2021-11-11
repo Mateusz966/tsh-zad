@@ -17,3 +17,7 @@ const notification = (title: string, status: 'success' | 'error'): void => {
 export const successNotification = (title: string): void => {
   notification(title, 'success');
 };
+
+export const errorNotification = (title: string): void => {
+  notification(title, 'error')
+}

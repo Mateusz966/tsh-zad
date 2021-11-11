@@ -24,6 +24,15 @@ const components = {
                 borderColor: '#2140E8'
             },
         },
+    },
+    Checkbox: {
+        baseStyle: {
+            control: {
+                _checked: {
+                    bg: "main"
+                }
+            }
+        }
     }
 }
 
@@ -35,8 +44,8 @@ const theme = extendTheme({
         heading: 'Nunito'
     },
     colors: {
-        main: '#2140E8',
-        secondary: '#4460F7',
+        main: '#4460F7',
+        secondary: '#2140E8',
         label: '#F9A52B',
         shadows: {
             100: '#F0F1F5',

@@ -4,7 +4,7 @@ import  { useFormContext } from "react-hook-form";
 
 interface Props {
   name: string;
-  label: string;
+  label?: string;
   helperText?: string;
 }
 
@@ -18,7 +18,7 @@ export const FormField: FC<Props> = ({
   console.log(errors)
   return (
     <FormControl mb={4} isInvalid={errors?.[name]}>
-      <FormLabel>{label}</FormLabel>
+      {label && <FormLabel>{label}</FormLabel>}
       {children}
       <FormHelperText>{helperText}</FormHelperText>
       <FormErrorMessage>{errors?.[name] && errors?.[name]?.message}</FormErrorMessage>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from 'routing/AppRoute.enum';
-import {Splitted} from "../components/layouts/Splitted/Splitted";
-import {AppInput} from "../components/common/Input/Input";
-import { FormProvider } from 'react-hook-form';
+import { Splitted } from "../components/layouts/Splitted/Splitted";
+import { AppInput } from "../components/common/Input/Input";
+
 
 export const Login = () => {
   return (

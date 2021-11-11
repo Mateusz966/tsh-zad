@@ -14,7 +14,8 @@ export const AppInput: FC<Props> = ({
     type,
     placeholder,
     isDisabled,
-    defaultValue
+    defaultValue,
+    ...rest
   }) => {
   return (
     <FormField label={label}>
@@ -23,6 +24,7 @@ export const AppInput: FC<Props> = ({
       type={type}
       defaultValue={defaultValue}
       isDisabled={isDisabled}
+      {...rest}
     />
     </FormField>
   );

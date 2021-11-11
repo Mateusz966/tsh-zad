@@ -15,6 +15,7 @@ const components = {
             outline: 'none',
             paddingY: '6',
             borderRadius: '0.4rem',
+            transition: '250ms all ease',
             _disabled: {
                 backgroundColor:  '#9194A5',
                 borderColor: '#9194A5'
@@ -24,10 +25,24 @@ const components = {
                 borderColor: '#2140E8'
             },
         },
+        variants: {
+            reverse: {
+                backgroundColor: '#fff',
+                color: '#4460F7',
+                borderColor: '#4460F7',
+                _hover: {
+                    background: '#fff !important',
+                    borderColor: '#2140E8',
+                    color: '#2140E8',
+                },
+            }
+        }
     },
     Checkbox: {
         baseStyle: {
             control: {
+                borderWidth: "1px",
+                borderRadius: "3px",
                 _checked: {
                     bg: "main"
                 }

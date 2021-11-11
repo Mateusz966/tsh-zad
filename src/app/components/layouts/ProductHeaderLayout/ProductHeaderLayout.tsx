@@ -6,7 +6,9 @@ export const ProductHeaderLayout:FC = ({children}) => {
   return (
     <DefaultContainer>
     <Grid
-     gridTemplateColumns="200px 500px 1fr"
+     gridTemplateColumns={["1fr 1fr", null , null, "200px 1fr 90px"]}
+     gridTemplateRows={["1fr 1fr", null, null, "1fr"]}
+     alignItems="center"
     >
       {children}
     </Grid>

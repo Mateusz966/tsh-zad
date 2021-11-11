@@ -9,7 +9,7 @@ export const ProductsHeader = () => (
     <GridItem>
       <Brand />
     </GridItem>
-    <GridItem>
+    <GridItem gridRowStart={[2, null, null, "auto"]} gridColumnStart={["2 span", null, null, "auto"]}>
      <ProductsSearchForm />
     </GridItem>
     <GridItem>

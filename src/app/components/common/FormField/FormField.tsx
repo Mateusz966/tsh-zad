@@ -6,22 +6,27 @@ interface Props {
   name: string;
   label?: string;
   helperText?: string;
+  isSearch?: boolean
 }
 
 export const FormField: FC<Props> = ({
     name,
     children,
     helperText,
-    label
+    label,
+    isSearch
   }) => {
   const { formState: { errors }} = useFormContext();
-  console.log(errors)
   return (
-    <FormControl mb={4} isInvalid={errors?.[name]}>
+    <FormControl mb={isSearch ? 0 : 4} isInvalid={errors?.[name]}>
       {label && <FormLabel>{label}</FormLabel>}
       {children}
-      <FormHelperText>{helperText}</FormHelperText>
-      <FormErrorMessage>{errors?.[name] && errors?.[name]?.message}</FormErrorMessage>
+      {!isSearch && (
+        <>
+         <FormHelperText>{helperText}</FormHelperText>
+         <FormErrorMessage>{errors?.[name] && errors?.[name]?.message}</FormErrorMessage>
+        </>
+        )}
     </FormControl>
   );
 };

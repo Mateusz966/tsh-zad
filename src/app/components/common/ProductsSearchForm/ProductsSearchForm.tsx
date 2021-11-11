@@ -1,22 +1,22 @@
 import {FormProvider, useForm} from "react-hook-form"
-import {AppInput} from "../Input/Input";
-import {Checkbox, Stack} from "@chakra-ui/react";
+import {Checkbox, Grid, Stack} from "@chakra-ui/react";
+import {SearchInput} from "../SearchInput/SearchInput";
 
 export const ProductsSearchForm = () => {
   const methods = useForm();
   return (
     <FormProvider {...methods}>
-    <form>
-      <AppInput placeholder="Search" name="search" />
-      <Stack spacing={5} direction="row">
-        <Checkbox size="lg" borderColor="shadows.100" borderStyle="solid" borderWidth="1px" borderRadius="3px">
+    <Grid gridTemplateColumns={["1fr", null, null, "400px 1fr"]} gridTemplateRows={["1fr 1fr", null, null, "1fr"]} as="form">
+      <SearchInput placeholder="Search" name="search" />
+      <Stack mt={[4, null, null, 0]} ml={[0, null, null, 8]} spacing={8} direction="row">
+        <Checkbox size="lg">
           Active
         </Checkbox>
-        <Checkbox  size="lg" borderColor="shadows.100" borderStyle="solid" borderWidth="1px" borderRadius="3px">
+        <Checkbox  size="lg">
           Promo
         </Checkbox>
       </Stack>
-    </form>
+    </Grid>
     </FormProvider>
   )
 }

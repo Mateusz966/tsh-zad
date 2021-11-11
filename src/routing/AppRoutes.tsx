@@ -8,7 +8,6 @@ export const AppRoutes = () => {
     <Switch>
       <Route path={AppRoute.HOME} exact component={Products} />
       <Route path={AppRoute.LOGIN} component={Login} />
-
       <Redirect to={AppRoute.HOME} />
     </Switch>
   );

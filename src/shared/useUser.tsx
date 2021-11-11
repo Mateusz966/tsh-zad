@@ -1,8 +1,9 @@
 import {Dispatch, SetStateAction, useState} from "react";
+import {cHistory} from "../config/history";
 
 export type LoginRes = {
   user: {
-    id: 0,
+    id: number,
     username: string,
     avatar: string
   },
@@ -21,6 +22,7 @@ export const useUser = (): UseUser => {
 
   const logout = () => {
     setUser(undefined);
+    cHistory.push('/login')
   }
 
   return {

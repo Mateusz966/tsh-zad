@@ -1,0 +1,1 @@
+export const apiUrl = 'https://join-tsh-api-staging.herokuapp.com';

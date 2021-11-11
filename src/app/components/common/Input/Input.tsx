@@ -17,9 +17,12 @@ export const AppInput: FC<Props> = ({
     defaultValue,
     ...rest
   }) => {
+  const { register } = useFormContext();
   return (
-    <FormField label={label}>
+    <FormField name={name} label={label}>
     <ChakraInput
+      {...register(name)}
+      height="50px"
       placeholder={placeholder}
       type={type}
       defaultValue={defaultValue}

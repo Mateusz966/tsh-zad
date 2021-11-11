@@ -1,10 +1,14 @@
 import {FC} from "react";
-import {GridItem, Grid} from "@chakra-ui/react";
+import {GridItem, Grid, Image} from "@chakra-ui/react";
 
-export const Splitted: FC = ({children}) => (
+interface Props {
+  src: string;
+}
+
+export const Splitted: FC<Props> = ({src, children}) => (
   <Grid>
     <GridItem>
-      photo
+      <Image src={src} alt="Login Photo" />
     </GridItem>
     <GridItem>
       {children}

@@ -1,9 +1,11 @@
 import {useApi} from "../../services/api";
 import {useForm, UseFormReturn} from "react-hook-form";
-import {successNotification} from "../components/common/Notification/Notification";
+import {errorNotification, successNotification} from "../components/common/Notification/Notification";
 import { zodResolver } from '@hookform/resolvers/zod';
 import {loginSchema} from "../components/formSchema/login";
 import {cHistory} from "../../config/history";
+import {LoginRes} from "../../shared/useUser";
+import {useUserContext} from "../../providers/UserProvider";
 
 
 type FormValues = {
@@ -22,19 +24,10 @@ type LoginReq = {
   password: string;
 }
 
-type LoginRes = {
-  "user": {
-    "id": 0,
-    "username": string,
-    "avatar": string
-  },
-  "expiresIn": string,
-  "access_token": string
-}
-
 
 export const useLogin = (): UseLogin => {
   const { post, inProgress } = useApi();
+  const { userDispatchContext: { setUser } } = useUserContext();
   const methods = useForm<FormValues>({
     delayError: 1000,
     mode: 'onChange',
@@ -45,16 +38,23 @@ export const useLogin = (): UseLogin => {
 
   const handleSubmit = async (data: LoginReq) => {
     const res = await logIn(data);
-    if (res) handleSuccess();
+    console.log(res);
+    if (res) handleSuccess(res);
+    else errorHandler();
   }
 
   const logIn = async (data: LoginReq) => {
     return post<LoginReq, LoginRes>('/users/login', data);
   }
 
-  const handleSuccess = () => {
-   successNotification('Zalogowano');
-   cHistory.push('/products');
+  const handleSuccess = (res: LoginRes) => {
+    setUser(res);
+    successNotification('Logged in');
+    cHistory.push('/products');
+  }
+
+  const errorHandler = () => {
+  errorNotification('Invalid credentials')
   }
 
 

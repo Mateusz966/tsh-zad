@@ -14,7 +14,14 @@ export const useApi = (): UseApi => {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {"Content-type": "application/json; charset=UTF-8"}
-    }).then((res) => res.json())
+    }).then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw res;
+      }
+    })
+      .then((data) => data)
       .catch((err) => console.error(err))
       .finally(() => setInProgress(false));
   }

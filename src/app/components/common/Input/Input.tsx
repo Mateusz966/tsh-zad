@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import {FormField} from "../FormField/FormField";
 
 interface Props extends InputProps {
-  label: string,
+  label?: string,
   name: string
 };
 

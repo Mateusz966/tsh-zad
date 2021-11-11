@@ -15,6 +15,7 @@ const components = {
             outline: 'none',
             paddingY: '6',
             borderRadius: '0.4rem',
+            transition: '250ms all ease',
             _disabled: {
                 backgroundColor:  '#9194A5',
                 borderColor: '#9194A5'
@@ -24,6 +25,29 @@ const components = {
                 borderColor: '#2140E8'
             },
         },
+        variants: {
+            reverse: {
+                backgroundColor: '#fff',
+                color: '#4460F7',
+                borderColor: '#4460F7',
+                _hover: {
+                    background: '#fff !important',
+                    borderColor: '#2140E8',
+                    color: '#2140E8',
+                },
+            }
+        }
+    },
+    Checkbox: {
+        baseStyle: {
+            control: {
+                borderWidth: "1px",
+                borderRadius: "3px",
+                _checked: {
+                    bg: "main"
+                }
+            }
+        }
     }
 }
 
@@ -35,8 +59,8 @@ const theme = extendTheme({
         heading: 'Nunito'
     },
     colors: {
-        main: '#2140E8',
-        secondary: '#4460F7',
+        main: '#4460F7',
+        secondary: '#2140E8',
         label: '#F9A52B',
         shadows: {
             100: '#F0F1F5',

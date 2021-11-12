@@ -34,7 +34,7 @@ const ProductsFilterProvider = ({ children }: ProductsFilterProviderProps): Reac
 
   const { methods: productsSearchMethods, search, promo, active } = useProductsSearchForm();
   const { paginationRange, setCurrentPage, currentPage } = usePagination({totalPages});
-  const { products, error } = useProductList({currentPage, promo, active, search})
+  const { products, error } = useProductList({currentPage, setCurrentPage, promo, active, search})
 
   useEffect(() => {
     if (products?.meta.totalPages !== totalPages) {

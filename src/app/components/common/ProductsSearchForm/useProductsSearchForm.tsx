@@ -19,5 +19,6 @@ export const useProductsSearchForm = (): UseProductsSearchForm => {
     search,
     active,
     promo,
-  };
+  }
+
 }

@@ -2,6 +2,7 @@ import useSWR from "swr";
 import {apiUrl} from "../../../../config/apiUrl";
 import {fetcher} from "../../../../utils/fetcher";
 import {ProductsRes} from "./ProductsList";
+import {Dispatch, SetStateAction, useEffect} from "react";
 
 interface UseProductList {
   products: ProductsRes | undefined;
@@ -11,11 +12,13 @@ interface UseProductList {
 interface Props {
   promo: boolean;
   active: boolean;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
   search?: string;
   currentPage?: number;
 }
 
-export const useProductList = ({ currentPage, promo, active, search }: Props): UseProductList => {
+export const useProductList = ({ currentPage, setCurrentPage, promo, active, search }: Props): UseProductList => {
+
   const params = {
     search: search ?? '',
     active: active ? 'true' : '',
@@ -24,10 +27,11 @@ export const useProductList = ({ currentPage, promo, active, search }: Props): U
 
   const queryParams = new URLSearchParams(params).toString();
 
-  console.log(queryParams)
-
-
   const { data, error } = useSWR<ProductsRes>(`${apiUrl}/products?limit=8&page=${currentPage ?? 1}&${queryParams}`, fetcher);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, active, promo])
 
   return {
     products: data,

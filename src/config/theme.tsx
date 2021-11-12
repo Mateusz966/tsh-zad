@@ -8,8 +8,8 @@ const components = {
     Button: {
         baseStyle: {
             width: '100%',
-            background: '#4460F7',
-            backgroundColor: '#4460F7',
+            background: 'main',
+            backgroundColor: 'main',
             fontWeight: 'normal',
             color: '#fff',
             border: '1px solid #4460F7',
@@ -35,8 +35,8 @@ const components = {
         variants: {
             reverse: {
                 backgroundColor: '#fff',
-                color: '#4460F7',
-                borderColor: '#4460F7',
+                color: 'main',
+                borderColor: 'main',
                 _hover: {
                     background: '#fff !important',
                     borderColor: '#2140E8',
@@ -44,6 +44,9 @@ const components = {
                 },
             },
             pagination: {
+                _active: {
+                  color: 'main',
+                },
                 display: 'inline-flex',
                 width: 'auto',
                 background: 'transparent',
@@ -61,7 +64,7 @@ const components = {
                 _hover: {
                     background: 'transparent',
                     backgroundColor: 'transparent',
-                    color: 'main'
+                    color: 'secondary'
                 },
             }
         }

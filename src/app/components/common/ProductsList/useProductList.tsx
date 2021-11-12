@@ -1,14 +1,36 @@
-import {Dispatch, SetStateAction, useState} from "react";
+import useSWR from "swr";
+import {apiUrl} from "../../../../config/apiUrl";
+import {fetcher} from "../../../../utils/fetcher";
+import {ProductsRes} from "./ProductsList";
 
 interface UseProductList {
-  pageIndex: number;
-  setPageIndex:  Dispatch<SetStateAction<number>>
+  products: ProductsRes | undefined;
+  error: boolean;
 }
 
-export const useProductList = (): UseProductList => {
-  const [pageIndex, setPageIndex ] = useState(1)
+interface Props {
+  promo: boolean;
+  active: boolean;
+  search?: string;
+  currentPage?: number;
+}
+
+export const useProductList = ({ currentPage, promo, active, search }: Props): UseProductList => {
+  const params = {
+    search: search ?? '',
+    active: active ? 'true' : '',
+    promo: promo ? 'true' : '',
+  };
+
+  const queryParams = new URLSearchParams(params).toString();
+
+  console.log(queryParams)
+
+
+  const { data, error } = useSWR<ProductsRes>(`${apiUrl}/products?limit=8&page=${currentPage ?? 1}&${queryParams}`, fetcher);
+
   return {
-    pageIndex,
-    setPageIndex
+    products: data,
+    error,
   }
 }

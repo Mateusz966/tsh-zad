@@ -1,17 +1,42 @@
 import {FC} from "react";
-import {Box, Button} from "@chakra-ui/react";
-import {usePagination} from "./usePagination";
-
-
-interface Props {
-  currentPage: number;
-  totalPages: number | undefined;
-}
+import { Button, Flex} from "@chakra-ui/react";
+import {useProductsFilterContext} from "../../../../providers/ProductsFilterProvider";
 
 
 
-export const Pagination:FC<Props> = ({totalPages, currentPage}) => {
+export const Pagination:FC = () => {
+
+  const { productsFilterContext:
+    { totalPages, currentPage, paginationRange },
+    productsFilterDispatchContext: { setCurrentPage }
+  } = useProductsFilterContext();
+
   if (!totalPages) return null;
-  const { paginationRange } = usePagination({currentPage, totalPages});
-  return paginationRange ? <Box>{paginationRange?.map((pag: any) => pag)}</Box> : null;
+
+
+  return paginationRange ? (
+    <Flex bg="#F2F2F2" gridColumnStart="span 4" justifyContent="center" mx="auto">
+      <Button
+       onClick={() => setCurrentPage(1)}
+       variant="pagination"
+      >
+        First
+      </Button>
+      {paginationRange?.map((pag) =>
+        <Button
+          isActive={pag === currentPage}
+          key={Math.random()}
+          onClick={() => setCurrentPage(pag)}
+          variant="pagination"
+        >
+          {pag}
+        </Button>
+      )}
+      <Button
+        onClick={() => setCurrentPage(totalPages)}
+        variant="pagination"
+      >
+        Last
+      </Button>
+    </Flex> ) : null;
 }

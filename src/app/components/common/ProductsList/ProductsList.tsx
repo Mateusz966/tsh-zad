@@ -1,9 +1,8 @@
-import useSWR from "swr";
-import {useProductList} from "./useProductList";
-import {apiUrl} from "../../../../config/apiUrl";
-import {fetcher} from "../../../../utils/fetcher";
 import {Pagination} from "../Pagination/Pagination";
-import {Spinner} from "@chakra-ui/react";
+import {Box, Button, GridItem, Heading, Image, Spinner, Text} from "@chakra-ui/react";
+import {useProductsFilterContext} from "../../../../providers/ProductsFilterProvider";
+import {ProductsGrid} from "../../layouts/ProductGrid/ProductsGrid";
+import {AppSpinner} from "../AppSpinner/AppSpinner";
 
 export type ProductsRes = {
   items: [
@@ -33,18 +32,56 @@ export type ProductsRes = {
 }
 
 export const ProductsList = () => {
-  const { pageIndex, setPageIndex  } = useProductList();
-  const { data, error } = useSWR<ProductsRes>(`${apiUrl}/products?search=&limit=3&page=${pageIndex}&promo=&active=`, fetcher);
-  console.log(error);
-  console.log(data)
-  if (!data) {
-   return <Spinner />
-  }
-  return <div>
-    {data?.items?.map((item) => <div key={item.id}>{item.name}</div>)}
-    <button onClick={() => setPageIndex(1)}>First</button>
-    <Pagination currentPage={3} totalPages={data.meta.totalPages} />
-    <button onClick={() => setPageIndex(data.meta.totalPages)}>Last</button>
-  </div>
 
+  const { productsFilterContext: { products } } = useProductsFilterContext()
+
+  if (!products) {
+   return <AppSpinner />
+  }
+
+  return (
+  <>
+    <ProductsGrid>
+      {products?.items?.map(({
+          active,
+          name,
+          image,
+          description,
+          id,
+          promo
+        }) => (
+        <GridItem pos="relative" borderRadius="8px" key={id} mb={2}>
+          <Image
+            borderTopLeftRadius="8px"
+            borderTopRightRadius="8px"
+            width="100%"
+            height="170px"
+            objectFit="cover"
+            src={image}
+          />
+          {  promo && (
+            <Box top="20px" left="0" bg="label" position="absolute" py={1} px={4}>
+              <Text lineHeight="1" color="#fff">
+                Promo
+              </Text>
+            </Box>
+          ) }
+          <Box pt={4} pb={6} bg="#fff" px="4">
+            <Heading title={name} isTruncated mb={1} size="md" fontWeight="600">
+              {name}
+            </Heading>
+            <Text height="110px" fontWeight="600" color="shadows.600">
+              {description}
+            </Text>
+            <Button isDisabled={!active}>
+              {active ? 'Show details' : 'Unavailable'}
+            </Button>
+          </Box>
+        </GridItem>
+        )
+      )}
+  </ProductsGrid>
+  <Pagination  />
+    </>
+  );
 }

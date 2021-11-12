@@ -7,6 +7,7 @@ interface Props {
 
 export const Splitted: FC<Props> = ({src, children}) => (
   <Grid
+    bg="#fff"
     height="100vh"
     gridTemplateColumns={["1fr", null, null, "40% 1fr"]}
   >

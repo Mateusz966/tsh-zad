@@ -1,9 +1,9 @@
 import {Pagination} from "../Pagination/Pagination";
-import {Box, Button, GridItem, Heading, Image, Text} from "@chakra-ui/react";
 import {useProductsFilterContext} from "../../../../providers/ProductsFilterProvider";
 import {ProductsGrid} from "../../layouts/ProductGrid/ProductsGrid";
 import {AppSpinner} from "../AppSpinner/AppSpinner";
 import {EmptyList} from "../EmptyList/EmptyList";
+import {ProductCard, ProductCardProps} from "../ProductCard/ProductCard";
 
 export type ProductsRes = {
   items: [
@@ -53,36 +53,18 @@ export const ProductsList = () => {
           image,
           description,
           id,
-          promo
-        }) => (
-        <GridItem pos="relative" borderRadius="md" key={id} mb={2}>
-          <Image
-            borderTopLeftRadius="md"
-            borderTopRightRadius="md"
-            width="100%"
-            height="170px"
-            objectFit="cover"
-            src={image}
-          />
-          {  promo && (
-            <Box top="20px" left="0" bg="label" position="absolute" py={1} px={4}>
-              <Text lineHeight="1" color="#fff">
-                Promo
-              </Text>
-            </Box>
-          ) }
-          <Box pt={4} pb={6} bg="#fff" px="4">
-            <Heading title={name} isTruncated mb={1} size="md" fontWeight="600">
-              {name}
-            </Heading>
-            <Text height="110px" fontWeight="600" color="shadows.600">
-              {description}
-            </Text>
-            <Button isDisabled={!active}>
-              {active ? 'Show details' : 'Unavailable'}
-            </Button>
-          </Box>
-        </GridItem>
+          promo,
+          rating,
+        }: ProductCardProps) => (
+        <ProductCard
+          id={id}
+          name={name}
+          image={image}
+          description={description}
+          promo={promo}
+          active={active}
+          rating={rating}
+        />
         )
       )}
   </ProductsGrid>

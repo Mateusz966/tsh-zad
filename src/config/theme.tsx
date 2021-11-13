@@ -43,6 +43,33 @@ const components = {
                     color: '#2140E8',
                 },
             },
+            star: {
+                _active: {
+                    color: 'label',
+                    fill: 'label'
+                },
+                pointerEvents: 'none',
+                display: 'inline-flex',
+                minW: '22px',
+                w: "22px",
+                background: 'transparent',
+                backgroundColor: 'transparent',
+                fontSize: 'md',
+                color: 'shadows.400',
+                paddingX: '1',
+                border: 'none',
+                outline: 'none',
+                fontWeight: 600,
+                _focus: {
+                    outline: 'none',
+                    boxShadow: 'none',
+                },
+                _hover: {
+                    background: 'transparent',
+                    backgroundColor: 'transparent',
+                    color: 'secondary'
+                },
+            },
             pagination: {
                 _active: {
                   color: 'main',

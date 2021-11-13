@@ -7,7 +7,7 @@ export const ProductHeaderLayout:FC = ({children}) => {
     <Box bg="#fff">
       <DefaultContainer>
         <Grid
-        gridTemplateColumns={["1fr 1fr", null , null, "200px 1fr 90px"]}
+        gridTemplateColumns={["1fr 1fr", null , null, "150px 1fr 90px", "200px 1fr 90px"]}
         gridTemplateRows={["1fr 1fr", null, null, "1fr"]}
         alignItems="center"
         paddingY="60px"

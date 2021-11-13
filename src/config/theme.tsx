@@ -15,7 +15,7 @@ const components = {
             border: '1px solid #4460F7',
             outline: 'none',
             paddingY: '6',
-            borderRadius: '0.4rem',
+            borderRadius: 'md',
             transition: '250ms all ease',
             _disabled: {
                 borderColor: '#9194A5',

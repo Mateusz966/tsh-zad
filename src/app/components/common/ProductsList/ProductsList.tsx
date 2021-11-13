@@ -1,8 +1,9 @@
 import {Pagination} from "../Pagination/Pagination";
-import {Box, Button, GridItem, Heading, Image, Spinner, Text} from "@chakra-ui/react";
+import {Box, Button, GridItem, Heading, Image, Text} from "@chakra-ui/react";
 import {useProductsFilterContext} from "../../../../providers/ProductsFilterProvider";
 import {ProductsGrid} from "../../layouts/ProductGrid/ProductsGrid";
 import {AppSpinner} from "../AppSpinner/AppSpinner";
+import {EmptyList} from "../EmptyList/EmptyList";
 
 export type ProductsRes = {
   items: [
@@ -35,8 +36,12 @@ export const ProductsList = () => {
 
   const { productsFilterContext: { products } } = useProductsFilterContext()
 
-  if (!products) {
+  if (!products?.items) {
    return <AppSpinner />
+  }
+
+  if (!products.items.length) {
+    return <EmptyList />
   }
 
   return (
@@ -50,10 +55,10 @@ export const ProductsList = () => {
           id,
           promo
         }) => (
-        <GridItem pos="relative" borderRadius="8px" key={id} mb={2}>
+        <GridItem pos="relative" borderRadius="md" key={id} mb={2}>
           <Image
-            borderTopLeftRadius="8px"
-            borderTopRightRadius="8px"
+            borderTopLeftRadius="md"
+            borderTopRightRadius="md"
             width="100%"
             height="170px"
             objectFit="cover"

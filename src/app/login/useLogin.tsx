@@ -34,11 +34,8 @@ export const useLogin = (): UseLogin => {
     resolver: zodResolver(loginSchema)
   });
 
-  //TODO API RETURN 404 CHECK LATER
-
   const handleSubmit = async (data: LoginReq) => {
     const res = await logIn(data);
-    console.log(res);
     if (res) handleSuccess(res);
     else errorHandler();
   }

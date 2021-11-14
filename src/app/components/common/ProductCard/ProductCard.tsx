@@ -2,6 +2,7 @@ import {Box, Button, GridItem, IconButton} from "@chakra-ui/react";
 import {FC} from "react";
 import {CardDescription, CardHeading, CardLabel, CardPhoto} from "../Card/Card";
 import {EmptyStar, FillStar} from "../../../../assets/Stars";
+import {ProductDetailsModal} from "../../modal/ProductDetailsModal/ProductDetailsModal";
 
 
 const StarRating = ({rating}: any) => {
@@ -48,7 +49,7 @@ export const ProductCard: FC<ProductCardProps> = ({
     promo,
     rating,
 }) => (
-  <GridItem pos="relative" borderRadius="md" key={id} mb={2}>
+  <GridItem data-testid="product-card" pos="relative" borderRadius="md" key={id} mb={2}>
     <CardPhoto image={image} />
     {  promo && (
      <CardLabel>
@@ -59,9 +60,12 @@ export const ProductCard: FC<ProductCardProps> = ({
       <CardHeading name={name} />
       <CardDescription description={description} />
       <StarRating rating={rating} />
-      <Button isDisabled={!active}>
-        {active ? 'Show details' : 'Unavailable'}
-      </Button>
+      <ProductDetailsModal
+        image={image}
+        active={active}
+        name={name}
+        description={description}
+      />
     </Box>
   </GridItem>
 )

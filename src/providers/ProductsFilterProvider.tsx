@@ -31,7 +31,6 @@ const ProductsFilterDispatchContext = createContext<ProductsFilterDispatch | und
 const ProductsFilterProvider = ({ children }: ProductsFilterProviderProps): ReactElement => {
 
   const [totalPages, setTotalPages] = useState(0);
-
   const { methods: productsSearchMethods, search, promo, active } = useProductsSearchForm();
   const { paginationRange, setCurrentPage, currentPage } = usePagination({totalPages});
   const { products, error } = useProductList({currentPage, setCurrentPage, promo, active, search})

@@ -19,14 +19,14 @@ export const ProductsSearchForm = () => {
           name="active"
           control={methods.control}
           render={({ field: { ref, ...rest } }) => (
-              <Checkbox {...rest}>Active</Checkbox>
+              <Checkbox data-testid="active-filter" {...rest}>Active</Checkbox>
           )}
         />
         <Controller
           name="promo"
           control={methods.control}
           render={({ field: { ref, ...rest } }) => (
-            <Checkbox {...rest} value="promo">Promo</Checkbox>
+            <Checkbox data-testid="promo-filter" {...rest} value="promo">Promo</Checkbox>
           )}
         />
       </Stack>

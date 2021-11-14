@@ -29,7 +29,6 @@ export const useLogin = (): UseLogin => {
   const { post, inProgress } = useApi();
   const { userDispatchContext: { setUser } } = useUserContext();
   const methods = useForm<FormValues>({
-    delayError: 1000,
     mode: 'onChange',
     resolver: zodResolver(loginSchema)
   });

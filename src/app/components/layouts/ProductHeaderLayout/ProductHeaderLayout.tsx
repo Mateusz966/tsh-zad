@@ -4,7 +4,7 @@ import {DefaultContainer} from "../DefaultContainer/DefaultContainer";
 
 export const ProductHeaderLayout:FC = ({children}) => {
   return (
-    <Box bg="#fff">
+    <Box as="header" bg="#fff">
       <DefaultContainer>
         <Grid
         gridTemplateColumns={["1fr 1fr", null , null, "150px 1fr 90px", "200px 1fr 90px"]}

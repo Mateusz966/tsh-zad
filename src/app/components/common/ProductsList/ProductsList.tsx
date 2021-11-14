@@ -4,6 +4,7 @@ import {ProductsGrid} from "../../layouts/ProductGrid/ProductsGrid";
 import {AppSpinner} from "../AppSpinner/AppSpinner";
 import {EmptyList} from "../EmptyList/EmptyList";
 import {ProductCard, ProductCardProps} from "../ProductCard/ProductCard";
+import {Box, Flex} from "@chakra-ui/react";
 
 export type ProductsRes = {
   items: [
@@ -37,7 +38,11 @@ export const ProductsList = () => {
   const { productsFilterContext: { products } } = useProductsFilterContext()
 
   if (!products?.items) {
-   return <AppSpinner />
+    return (
+      <Flex position="absolute" left="0" right="0" justifyContent="center" mt="10" m="auto">
+        <AppSpinner />
+      </Flex>
+    )
   }
 
   if (!products.items.length) {
@@ -57,6 +62,7 @@ export const ProductsList = () => {
           rating,
         }: ProductCardProps) => (
         <ProductCard
+          key={id}
           id={id}
           name={name}
           image={image}
@@ -67,8 +73,8 @@ export const ProductsList = () => {
         />
         )
       )}
-  </ProductsGrid>
-  <Pagination  />
-    </>
+    </ProductsGrid>
+    <Pagination  />
+  </>
   );
 }

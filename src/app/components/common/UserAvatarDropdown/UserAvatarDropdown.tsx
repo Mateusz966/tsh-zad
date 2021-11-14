@@ -7,7 +7,7 @@ export const UserAvatarDropdown = () => {
 
   return (
     <Flex ml="auto" justifyContent="flexEnd">
-      {userData?.user ? (<Text>{userData.user?.username}</Text> ) : <Button onClick={() => cHistory.push('/login')} variant="reverse">Log In</Button>}
+      {userData?.user ? (<Text>{userData.user?.username}</Text> ) : <Button data-testid="redirect-to-login" onClick={() => cHistory.push('/login')} variant="reverse">Log In</Button>}
     </Flex>
   )
 }

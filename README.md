@@ -1,23 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and modified by TSH team for the recruit process.
-
-## Quick Start
-
-To start the development:
-
-```
-mkdir new-project
-cd new-project/
-git clone git@github.com:TheSoftwareHouse/react-interview-starter-ts.git .
-rm -r .git
-npm install
-cd e2e
-npm install
-cd ..
-cp .env.dist .env
-cp .env.e2e.dist ./e2e/.env
-```
-
-where `new-project` is your desired folder.
+# Step to run project
+In project directory run 
+`npm install`
+After install run 
+`npm start`
 
 ## E2E
 

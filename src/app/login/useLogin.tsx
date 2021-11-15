@@ -29,16 +29,12 @@ export const useLogin = (): UseLogin => {
   const { post, inProgress } = useApi();
   const { userDispatchContext: { setUser } } = useUserContext();
   const methods = useForm<FormValues>({
-    delayError: 1000,
     mode: 'onChange',
     resolver: zodResolver(loginSchema)
   });
 
-  //TODO API RETURN 404 CHECK LATER
-
   const handleSubmit = async (data: LoginReq) => {
     const res = await logIn(data);
-    console.log(res);
     if (res) handleSuccess(res);
     else errorHandler();
   }
@@ -56,7 +52,6 @@ export const useLogin = (): UseLogin => {
   const errorHandler = () => {
   errorNotification('Invalid credentials')
   }
-
 
   return {
     handleSubmit,

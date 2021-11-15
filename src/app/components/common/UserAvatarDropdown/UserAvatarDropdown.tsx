@@ -6,8 +6,8 @@ export const UserAvatarDropdown = () => {
   const { userContext: { user: userData }, userDispatchContext: { logout  } } = useUserContext();
 
   return (
-    <Flex ml="auto" justifyContent="flexEnd">
-      {userData?.user ? (<Text>{userData.user?.username}</Text> ) : <Button onClick={() => cHistory.push('/login')} variant="reverse">Log In</Button>}
+    <Flex w="90px" ml="auto" justifyContent="flexEnd">
+      {userData?.user ? (<Text>{userData.user?.username}</Text> ) : <Button py="5" data-testid="redirect-to-login" onClick={() => cHistory.push('/login')} variant="reverse">Log In</Button>}
     </Flex>
   )
 }

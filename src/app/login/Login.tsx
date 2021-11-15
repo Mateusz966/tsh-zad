@@ -16,13 +16,13 @@ export const Login = () => {
       <Brand mt="10" />
       <FormProvider {...methods}>
       <FormContainer>
-      <form onSubmit={methods.handleSubmit(submit)}>
+      <form data-testid="form" onSubmit={methods.handleSubmit(submit)}>
         <Heading mb="10" fontWeight="600" as="h2" size="lg">
           Login
         </Heading>
         <AppInput name="username" placeholder="Enter username" label="Username" />
         <AppInput name="password" placeholder="Enter password" label="Password" />
-        <Button mt="10" isLoading={inProgress} type="submit">Log in</Button>
+        <Button data-testid="login-submit" mt="10" isLoading={inProgress} type="submit">Log in</Button>
       </form>
       </FormContainer>
       </FormProvider>

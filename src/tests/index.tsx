@@ -3,9 +3,20 @@ import React, { ReactNode } from 'react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Queries } from '@testing-library/dom';
+import theme from "../config/theme";
+import {ChakraProvider} from "@chakra-ui/react";
+import {UserProvider} from "../providers/UserProvider";
 
 const Wrapper = ({ children }: { children?: ReactNode }) => {
-  return <Router>{children}</Router>;
+  return (
+    <ChakraProvider theme={theme}>
+      <Router>
+        <UserProvider>
+          {children}
+        </UserProvider>
+      </Router>
+    </ChakraProvider>
+  )
 };
 
 function customRender(ui: React.ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult;

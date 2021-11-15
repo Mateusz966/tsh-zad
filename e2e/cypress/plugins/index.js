@@ -15,7 +15,7 @@ const wp = require('@cypress/webpack-preprocessor');
 
 // this will fail if variables defined in the .dist file are not available either in the environment on the .env file
 // Anything already defined in the environment is not overriden by the values from .env
-require('dotenv-safe').config({ path: '.env', example: '../.env.e2e.dist' });
+require('dotenv-safe').config({ path: '../.env.e2e.dist', example: '../.env.e2e.dist' });
 
 module.exports = (on, config) => {
   const options = {

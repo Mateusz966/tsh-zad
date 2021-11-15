@@ -18,8 +18,8 @@ export const FormField: FC<Props> = ({
   }) => {
   const { formState: { errors }} = useFormContext();
   return (
-    <FormControl mb={isSearch ? 0 : 4} isInvalid={errors?.[name]}>
-      {label && <FormLabel>{label}</FormLabel>}
+    <FormControl data-testid={name} mb={isSearch ? 0 : 4} isInvalid={errors?.[name]}>
+      {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       {children}
       {!isSearch && (
         <>

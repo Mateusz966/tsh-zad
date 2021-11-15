@@ -21,6 +21,7 @@ export const SearchInput: FC<Props> = (
     <FormField isSearch name={name} label={label}>
       <InputGroup>
       <ChakraInput
+        data-testid="search-input"
         {...register(name)}
         height="50px"
         placeholder={placeholder}

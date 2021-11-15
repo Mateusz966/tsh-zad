@@ -26,13 +26,13 @@ export const ProductDetailsModal:FC<Props> = ({active, name, description, image}
       </Button>
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent mx="5" borderRadius="md">
+        <ModalContent maxW="600px" mx="5" borderRadius="md">
           <ModalCloseButton />
           <ModalBody p={0}>
-            <CardPhoto image={image} />
+            <CardPhoto height="300px" image={image} />
             <Box py="5" px="5">
               <CardHeading name={name} />
-              <CardDescription description={description} />
+              <CardDescription height="80px" description={description} />
             </Box>
           </ModalBody>
         </ModalContent>

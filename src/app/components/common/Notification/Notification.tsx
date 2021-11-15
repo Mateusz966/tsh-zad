@@ -7,7 +7,7 @@ const notification = (title: string, status: 'success' | 'error'): void => {
   toast({
     title,
     status,
-    duration: 60000,
+    duration: 1000,
     isClosable: true,
     position: 'top-right',
   });

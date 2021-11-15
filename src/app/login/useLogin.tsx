@@ -53,7 +53,6 @@ export const useLogin = (): UseLogin => {
   errorNotification('Invalid credentials')
   }
 
-
   return {
     handleSubmit,
     inProgress,

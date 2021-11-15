@@ -16,7 +16,7 @@ export const Login = () => {
       <Brand mt="10" />
       <FormProvider {...methods}>
       <FormContainer>
-      <form onSubmit={methods.handleSubmit(submit)}>
+      <form data-testid="form" onSubmit={methods.handleSubmit(submit)}>
         <Heading mb="10" fontWeight="600" as="h2" size="lg">
           Login
         </Heading>

@@ -26,6 +26,8 @@ export const useApi = (): UseApi => {
       .finally(() => setInProgress(false));
   }
 
+
+
   return {
     post,
     inProgress,

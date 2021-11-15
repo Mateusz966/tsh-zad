@@ -10,7 +10,8 @@ export const ProductHeaderLayout:FC = ({children}) => {
         gridTemplateColumns={["1fr 1fr", null , null, "150px 1fr 90px", "200px 1fr 90px"]}
         gridTemplateRows={["1fr 1fr", null, null, "1fr"]}
         alignItems="center"
-        paddingY="60px"
+        pb={[4, null, null, 6]}
+        pt={[0, null, null, 6]}
         >
           {children}
         </Grid>

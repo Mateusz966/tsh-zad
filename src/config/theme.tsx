@@ -10,11 +10,11 @@ const components = {
             width: '100%',
             background: 'main',
             backgroundColor: 'main',
-            fontWeight: 'normal',
             color: '#fff',
             border: '1px solid #4460F7',
             outline: 'none',
             paddingY: '6',
+            fontWeight: 600,
             borderRadius: 'md',
             transition: '250ms all ease',
             _disabled: {
@@ -43,6 +43,22 @@ const components = {
                     color: '#2140E8',
                 },
             },
+            listElement: {
+                background: '#fff',
+                backgroundColor: '#fff',
+                borderColor: '#fff',
+                color: "shadows.900",
+                justifyContent: 'flex-start',
+                py: "7",
+                px: "5",
+                width: '100%',
+                boxShadow: '0px 0px 10px 0px rgba(212, 213, 216, 1)',
+                _hover: {
+                    background: '#fff',
+                    backgroundColor: '#fff',
+                    borderColor: '#fff',
+                },
+},
             star: {
                 _active: {
                     color: 'label',
@@ -100,7 +116,7 @@ const components = {
         baseStyle: {
             control: {
                 borderWidth: "1px",
-                borderRadius: "3px",
+                borderRadius: "sm",
                 _checked: {
                     bg: "main"
                 }

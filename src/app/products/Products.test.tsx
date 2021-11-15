@@ -99,7 +99,7 @@ describe('Products', () => {
 
   });
 
-  // Problem with override request
+  // TODO Problem with override request
 
   // test('If api response doesnt contain any elements should render empty list info', async () => {
   //   server.use(

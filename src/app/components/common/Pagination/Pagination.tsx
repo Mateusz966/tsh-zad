@@ -15,7 +15,7 @@ export const Pagination:FC = () => {
 
 
   return paginationRange ? (
-    <Flex bg="#F2F2F2" gridColumnStart="span 4" justifyContent="center" mx="auto">
+    <Flex pb="10" bg="#F2F2F2" gridColumnStart="span 4" justifyContent="center" mx="auto">
       <Button
        onClick={() => setCurrentPage(1)}
        variant="pagination"

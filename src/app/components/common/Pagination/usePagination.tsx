@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction, useMemo, useState} from "react";
+import {useMediaQuery} from "@chakra-ui/react";
 
 interface Props {
   totalPages: number;
@@ -6,7 +7,7 @@ interface Props {
 
 interface UsePagination {
   paginationRange: number[] | undefined;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setCurrentPage: any;
   currentPage: number;
 }
 
@@ -19,6 +20,12 @@ const range = (start: number, end: number) => {
 
 export const usePagination = ({ totalPages }: Props): UsePagination => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const setCurrentPageFn = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({behavior: 'smooth', top: 0, left: 0});
+  }
+
 
 
   const paginationRange = useMemo(() => {
@@ -40,7 +47,7 @@ export const usePagination = ({ totalPages }: Props): UsePagination => {
 
   return {
     paginationRange,
-    setCurrentPage,
+    setCurrentPage: setCurrentPageFn,
     currentPage,
   }
 
